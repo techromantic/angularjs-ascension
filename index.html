@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base href="/" />
+	<meta charset="UTF-8">
+	<title>Ascension: Personal Time Management</title>
+
+<link rel="stylesheet" href="css/material.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/semantic.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<!-- Libraries -->
+	<script src="js/angular.js"></script>
+	<script src="js/angular-animate.min.js"></script>
+	<script src="js/angular-aria.min.js"></script>
+	<script src="js/angular-messages.js"></script>
+	<script src="js/angular-ui-router.min.js"></script>
+	<script src="js/ngStorage.js"></script>
+	<script src="js/material.js"></script>
+	<script src="js/moment.js"></script>
+  <script src="js/store2.js"></script>
+  <script src="js/store.array.js"></script>
+  <script src="js/angular-storage.min.js"></script>
+	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script><script src="js/semantic.js"></script>
+
+<!-- Application Script -->
+	<script src="app.js"></script>
+
+<!-- Services Script? -->
+	<script src="common/services/scheduleService.js"></script>
+  <script src="common/services/assignmentService.js"></script>
+<!-- Schedule Controller -->
+	<script src="app/schedules/scheduleCtrl.js"></script>
+	<script src="app/dashboard/dashboardCtrl.js"></script>
+	<script src="app/assignments/assignmentsCtrl.js"></script>
+</head>
+
+
+<body ng-app="ascensionApp">
+	
+
+	<!-- Header/Navigation Tabs for SPA   -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Ascension: Personal Time Management</span>
+
+       <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="https://www.gingergarlic.github.io">Sarim Qureshi | 2017</a>
+
+      </nav>
+    </div>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="/home" class="mdl-layout__tab is-active">Dashboard</a>
+      <a href="/schedule" class="mdl-layout__tab">Schedule</a>
+      <a href="/assignments" class="mdl-layout__tab">Assignments</a>
+    </div>
+  </header>
+
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Username</span>
+  </div>
+
+  <main class="mdl-layout__content">
+  <!-- Dashboard -->
+
+   <div class="container">
+
+    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+    	<div ui-view></div>
+
+	</div>
+
+
+
+
+  </main>
+
+
+</div>
+  
+</body>
+</html>

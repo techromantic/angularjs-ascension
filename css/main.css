@@ -1,0 +1,241 @@
+html, body {
+    height: 100%;
+}
+html, body, * {
+    padding: 0;
+    margin: 0;
+}
+/*Assignments Page*/
+#assignment_input{
+	background: #e0e0e0;
+}
+
+#a_card{
+	padding-top: 10px;
+
+}
+
+#a_inp{
+	margin-left: 10px;
+}
+
+#a_btn{
+	display: inline;
+	float: right;
+	margin-top: 10px;
+  z-index: 5;
+}
+
+#assignment_div{
+	
+  float: left;
+  display: block;
+}
+
+#assignment_title{
+	font-size: 28px;
+	 height: 80px;
+  line-height: 80px;
+}
+
+
+#a_due{
+	position: static;
+	z-index: -2;
+}
+
+#a_info{
+	position: relative; 
+	right: 10px;
+  z-index: 0;
+}
+
+/*Dashboard*/
+#schedule{
+    
+}
+
+#content{
+	position: relative;
+}
+
+#dashboard{
+	position: fixed;
+    height: 90%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#sidebar:hover {
+    overflow-y: auto;
+}
+.health {
+  background: #ef5350;
+  color: white;
+}
+.health > .mdl-card__title,
+.health > .mdl-card__actions,
+.health > .mdl-card__actions > .mdl-button {
+  color: white;
+}
+
+.business {
+  background: #ffffff;
+  color: black;
+}
+.business > .mdl-card__title,
+.business > .mdl-card__actions,
+.business > .mdl-card__actions > .mdl-button {
+  color: black;
+}
+
+.education {
+  background:  #3f51b5;
+  color: white;
+}
+.education > .mdl-card__title,
+.education > .mdl-card__actions,
+.education > .mdl-card__actions > .mdl-button {
+  color: white;
+}
+
+
+.daily_living {
+  background: #66bb6a;
+  color: white;
+}
+.daily_living > .mdl-card__title,
+.daily_living > .mdl-card__actions,
+.daily_living > .mdl-card__actions > .mdl-button {
+  color: white;
+}
+
+
+.personal {
+  background: #ffee58;
+  color: black;
+}
+.personal > .mdl-card__title,
+.personal > .mdl-card__actions,
+.personal > .mdl-card__actions > .mdl-button {
+  color: black;
+}
+
+
+.logistics {
+  background: #212121;
+  color: white;
+}
+.logistics > .mdl-card__title,
+.logistics > .mdl-card__actions,
+.logistics > .mdl-card__actions > .mdl-button {
+  color: white;
+}
+
+
+.schedule-card.mdl-card {
+  width: auto;
+  height: auto;
+  margin-top: 10px;
+}
+
+.schedule-card > .mdl-card__actions {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.schedule-card > .mdl-card__title {
+  align-items: flex-start;
+}
+.schedule-card > .mdl-card__title > h2 {
+  margin-top: 0;
+}
+.schedule-card > .mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+}
+.schedule-card > .mdl-card__actions > .material-icons {
+  padding-right: 10px;
+}
+.schedule-card > .mdl-card__title,
+.schedule-card > .mdl-card__actions,
+.schedule-card > .mdl-card__actions > .mdl-button {
+
+}
+
+.schedule-card > .mdl-card__title > .mdl-card__title-text{
+	font-size: 20px;
+}
+
+#geo{
+
+	font-size: 32px;
+}
+
+#headline{
+	font-size: 48px; 
+	padding-left: 5px;
+	padding-top: 5px;
+	float: left;
+
+}
+
+#dash_details{
+  float: left;
+	padding-left: 15px;
+	padding-top: 0px;
+	font-size: 24px;
+}
+
+#notes_c{
+  padding: 0px;
+  margin: 0px;
+
+}
+
+#notes{
+  padding-left: 20px;
+
+  width: 900px;
+}
+
+#streak{
+	margin-top: 20px;
+	margin-left: 20px;
+	font-size: 32px;
+}
+.business > .mdl-card__title,
+.business > .mdl-card__actions,
+.business > .mdl-card__actions > .mdl-button {
+  color: black;
+}
+
+#current_info{
+	height: 40%;
+}
+
+.dashboard-card.mdl-card {
+  margin-left: 10px;
+  width: 63%;
+  height: 80%;
+  margin-top: 10px;
+  
+
+}
+
+.dashboard-card > .mdl-card__actions {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.dashboard-card > .mdl-card__title {
+  align-items: flex-start;
+}
+.dashboard-card > .mdl-card__title > h2 {
+  margin-top: 0;
+}
+.dashboard-card > .mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+}
+.dashboard-card > .mdl-card__actions > .material-icons {
+  padding-right: 10px;
+}

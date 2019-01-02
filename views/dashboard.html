@@ -1,0 +1,145 @@
+
+<div class="page-content"> 
+
+      <!-- Grid -->
+		<div class="mdl-grid">
+		<!-- Schedule on Dashboard -->
+			<div class="mdl-cell mdl-cell--4-col" >
+				<div ng-controller="ScheduleCtrl" >
+				<div id="schedule">
+				<div ng-repeat="schedule in (schedules_left = (schedules | filter: scheduleTimer))  | orderBy:orderTime">
+
+				<div ng-class="{'business': schedule.iCategory === 'Business', 'health': schedule.iCategory === 'Health', 'daily_living': schedule.iCategory === 'Daily Living', 'education': schedule.iCategory === 'Education', 'personal': schedule.iCategory === 'Personal', 'logistics':schedule.iCategory === 'Logistics'}" class="schedule-card mdl-card mdl-shadow--2dp"
+				ng-click="select(schedule)">
+
+				  <div class="mdl-card__title">
+				    <h2 class="mdl-card__title-text">{{ schedule.iStart}} {{ schedule.iName}}</h2>
+				  </div>
+
+				  <div class="mdl-card__actions mdl-card--border">
+				    <a ng-click="done(schedule)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				     <i class="material-icons">event</i>
+				    </a>
+				  </div>
+
+				</div>
+				</div>
+				</div>
+ 				<div ng-show="first" ng-class="{'daily_living': first}"class="schedule-card mdl-card mdl-shadow--2dp">
+				
+				<div class="mdl-card__title">
+				    <h2 class="mdl-card__title-text">Welcome to Ascension!</h2>
+
+				   
+				  </div>
+
+				<div class="mdl-card__actions mdl-card--border" > 
+					 <p style="margin-left: 10px; margin-right: 10px;">Welcome to Ascension Personal Time Management. Your schedule will be displayed in cards just like this, and you will be notified of upcoming activities/assignments on the dashboard to the right. Add a schedule item from the schedule tab above to have your time managed. You can click on schedule items to view them in the dashboard. You may also use the assignments feature by clicking on the Assignments tab.</p>
+
+				</div>
+			
+				</div>
+
+				<div ng-show="!first" ng-class="{'education': !first}"class="schedule-card mdl-card mdl-shadow--2dp">
+				
+				<div class="mdl-card__title">
+				    <h2 class="mdl-card__title-text">You've had a fulfilling day!</h2>
+
+				   
+				  </div>
+
+				<div class="mdl-card__actions mdl-card--border" > 
+					 <p style="margin-left: 10px; margin-right: 10px;">Thanks for using the Ascension: PTM Prototype.</p>
+
+				</div>
+			
+				</div>
+			</div>
+		
+</div>
+		<!-- Dashboard -->
+			<div class="mdl-cell mdl-cell--8-col">
+				<div id="dashboard" ng-controller="DashboardCtrl">
+					<div class="dashboard-card mdl-card mdl-shadow--4dp" 
+					ng-class="{'business': item.iCategory === 'Business', 'health': item.iCategory === 'Health', 'daily_living': item.iCategory === 'Daily Living', 'education': item.iCategory === 'Education', 'personal': item.iCategory === 'Personal', 'logistics':item.iCategory === 'Logistics'}">
+						
+						<div style="padding-left: 15px; margin-top: 5px; margin-bottom: 5px; padding-bottom: 0px; padding-top: 0px;"  class="mdl-card__title">
+
+				    	<h1 id="geo" class="mdl-card__title-text">
+				    	{{ curr_date }} <br>
+				    	{{ curr_time }} 
+				    	</h1>
+
+				  		</div>
+						
+						<div id="current_info">
+						<div class="mdl-card__actions mdl-card--border">
+							
+							<h1 ng-show="!first" class="mdl-card__title-text" id="headline">
+					    	It's time for your {{item.iName}} 
+					    	 
+					    	</h1>
+
+					    	<h1 ng-show="first" class="mdl-card__title-text" id="headline">
+					    	Looks like you need to plan something.
+					    	 
+					    	</h1>
+
+					   		<div id="streak" class="material-icons mdl-badge mdl-badge--overlap" data-badge="{{item.streak}}">done_all</div>
+
+						</div>
+						<br>
+						<div  id="dash_details">
+							({{item.iStart}} - {{item.iEnd}}) 
+								
+							
+						</div>	
+						<br>
+						<div class="mdl-card__actions" id="notes_c">
+							
+							<div class="mdl-textfield mdl-js-textfield">
+							    <textarea class="mdl-textfield__input" type="text" rows= "7" id="notes" ng-model="item.notes"></textarea>
+							    
+		
+
+							</div>
+
+						
+						</div>	
+
+		<h1 ng-controller="AssignmentsCtrl" style="padding-left: 15px;" class="mdl-card__title-text">
+						    	
+						    	<div ng-if="!today"> Flip over to the assignments tab to retrieve data on the dashboard. </div>
+
+						    	<div ng-show="today">You have {{ today }} assignments due today, and {{ week }} this week. </div>
+						    	
+					</h1>
+				
+					
+			
+
+						</div>
+						
+					
+
+
+						<div class="mdl-card__actions mdl-card--border" style="margin-top: 140px;">
+								
+
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+							<i class="material-icons">event</i>
+							</a>
+
+
+						</div>
+
+
+					</div>
+				</div>
+				
+			</div>
+
+
+
+      
+      </div>

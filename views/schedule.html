@@ -1,0 +1,282 @@
+<div id="container" ng-controller="ScheduleCtrl as vm"> 
+<div class="mdl-grid" id="assignment_input">
+  <div class="mdl-cell mdl-cell--12-col" >
+    <form action="#">
+
+	    <select class="ui dropdown" ng-model="schedule.iDay" ng-options="day for day in days" id="a_inp">
+	      <option value="">Day</option>
+	    </select>
+
+       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="a_inp">
+        <input ng-model="schedule.iName" class="mdl-textfield__input" type="text" >
+        <label class="mdl-textfield__label" for="aName">Schedule Task Name</label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="a_inp">
+        <input ng-model="schedule.iStart" class="mdl-textfield__input" type="text" >
+        <label class="mdl-textfield__label" for="aDate">Start Time</label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="a_inp">
+        <input ng-model="schedule.iEnd"class="mdl-textfield__input" type="text" >
+        <label class="mdl-textfield__label" for="aTime">End Time</label>
+      </div>
+
+    <select class="ui dropdown" ng-model="schedule.iCategory" ng-options="type for type in types" id="a_inp">
+      <option value="">Category</option>
+    </select>
+
+
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+    ng-disabled="!schedule.iName || !schedule.iStart"ng-click="add(schedule)" id="a_inp">
+      <i class="material-icons">add</i>
+    </button>
+
+    </form>
+
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" style="background: #ef5350;"ng-click="reset()">
+  <i class="material-icons">delete_forever</i>
+</button>
+
+
+  </div>
+</div>
+	
+
+<div class="mdl-grid">
+
+		<table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+		  <thead>
+		    <tr>
+        
+        <th class="mdl-data-table__cell--non-numeric">Monday's Schedule</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+          <tr ng-repeat="schedule in schedules | orderBy:orderTime"  ng-show="schedule.iDay == 'Monday' || schedule.iDay == 'Every Day'" ng-class="{'business': schedule.iCategory === 'Business', 'health': schedule.iCategory === 'Health', 'daily_living': schedule.iCategory === 'Daily Living', 'education': schedule.iCategory === 'Education', 'personal': schedule.iCategory === 'Personal', 'logistics':schedule.iCategory === 'Logistics'}">
+         
+          <div >
+            <td class="mdl-data-table__cell--non-numeric">
+            
+              
+              {{ schedule.iStart }}
+
+              <div ng-show="schedule.iEnd">
+               - {{ schedule.iEnd }}
+              </div>
+            
+          </td>
+            <td>
+              {{ schedule.iName }} 
+            </td>
+
+          </div>
+        </tr>
+		
+		  </tbody>
+		</table>
+
+<table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+      <thead>
+        <tr>
+        <th class="mdl-data-table__cell--non-numeric">Tuesday's Schedule</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="schedule in schedules | orderBy:orderTime" ng-show="schedule.iDay == 'Tuesday' || schedule.iDay == 'Every Day'" ng-class="{'business': schedule.iCategory === 'Business', 'health': schedule.iCategory === 'Health', 'daily_living': schedule.iCategory === 'Daily Living', 'education': schedule.iCategory === 'Education', 'personal': schedule.iCategory === 'Personal', 'logistics':schedule.iCategory === 'Logistics'}">
+         
+          <div  >
+            <td class="mdl-data-table__cell--non-numeric">
+            
+              
+              {{ schedule.iStart }}
+              
+              <div ng-show="schedule.iEnd">
+               - {{ schedule.iEnd }}
+              </div>
+          </td>
+            <td>
+              {{ schedule.iName }} 
+            </td>
+
+          </div>
+        </tr>
+    
+      </tbody>
+    </table>
+
+    <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+      <thead>
+        <tr>
+         <th class="mdl-data-table__cell--non-numeric">Wednesday's Schedule</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="schedule in schedules | orderBy:orderTime" ng-show="schedule.iDay == 'Wednesday' || schedule.iDay == 'Every Day'" ng-class="{'business': schedule.iCategory === 'Business', 'health': schedule.iCategory === 'Health', 'daily_living': schedule.iCategory === 'Daily Living', 'education': schedule.iCategory === 'Education', 'personal': schedule.iCategory === 'Personal', 'logistics':schedule.iCategory === 'Logistics'}">
+         
+          <div  >
+            <td class="mdl-data-table__cell--non-numeric">
+            
+              
+              {{ schedule.iStart }}
+            
+              <div ng-show="schedule.iEnd">
+               - {{ schedule.iEnd }}
+              </div>
+          </td>
+            <td>
+              {{ schedule.iName }} 
+            </td>
+
+          </div>
+        </tr>
+    
+      </tbody>
+    </table>
+
+    <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+      <thead>
+        <tr>
+         <th class="mdl-data-table__cell--non-numeric">Thursday's Schedule</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="schedule in schedules | orderBy:orderTime" ng-show="schedule.iDay == 'Thursday' || schedule.iDay == 'Every Day'" ng-class="{'business': schedule.iCategory === 'Business', 'health': schedule.iCategory === 'Health', 'daily_living': schedule.iCategory === 'Daily Living', 'education': schedule.iCategory === 'Education', 'personal': schedule.iCategory === 'Personal', 'logistics':schedule.iCategory === 'Logistics'}">
+         
+          <div >
+            <td class="mdl-data-table__cell--non-numeric">
+            
+              
+              {{ schedule.iStart }}
+              <div ng-show="schedule.iEnd">
+               - {{ schedule.iEnd }}
+              </div>
+          </td>
+            <td>
+              {{ schedule.iName }} 
+            </td>
+
+          </div>
+        </tr>
+    
+      </tbody>
+    </table>
+
+    <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+      <thead>
+        <tr>
+        <th class="mdl-data-table__cell--non-numeric">Friday's Schedule</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+        </tr>
+      </thead>
+      <tbody> 
+          <tr ng-repeat="schedule in schedules | orderBy:orderTime" ng-show="schedule.iDay == 'Friday' || schedule.iDay == 'Every Day'" ng-class="{'business': schedule.iCategory === 'Business', 'health': schedule.iCategory === 'Health', 'daily_living': schedule.iCategory === 'Daily Living', 'education': schedule.iCategory === 'Education', 'personal': schedule.iCategory === 'Personal', 'logistics':schedule.iCategory === 'Logistics'}">
+         
+          <div  >
+            <td class="mdl-data-table__cell--non-numeric">
+            
+              
+              {{ schedule.iStart }}
+              <div ng-show="schedule.iEnd">
+               - {{ schedule.iEnd }}
+              </div>
+          </td>
+            <td>
+              {{ schedule.iName }} 
+            </td>
+
+          </div>
+        </tr>
+    
+      </tbody>
+    </table>
+
+    <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+      <thead>
+        <tr>
+        <th class="mdl-data-table__cell--non-numeric">Saturday's Schedule</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="schedule in schedules | orderBy:orderTime" ng-show="schedule.iDay == 'Saturday' || schedule.iDay == 'Every Day'" ng-class="{'business': schedule.iCategory === 'Business', 'health': schedule.iCategory === 'Health', 'daily_living': schedule.iCategory === 'Daily Living', 'education': schedule.iCategory === 'Education', 'personal': schedule.iCategory === 'Personal', 'logistics':schedule.iCategory === 'Logistics'}">
+         
+          <div  >
+            <td class="mdl-data-table__cell--non-numeric">
+            
+              
+              {{ schedule.iStart }}
+              <div ng-show="schedule.iEnd">
+               - {{ schedule.iEnd }}
+              </div>
+          </td>
+            <td>
+              {{ schedule.iName }} 
+            </td>
+
+          </div>
+        </tr>
+    
+      </tbody>
+    </table>
+
+    <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+      <thead>
+        <tr>
+        <th class="mdl-data-table__cell--non-numeric">Sunday's Schedule</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="schedule in schedules | orderBy:orderTime" ng-show="schedule.iDay == 'Sunday' || schedule.iDay == 'Every Day'" ng-class="{'business': schedule.iCategory === 'Business', 'health': schedule.iCategory === 'Health', 'daily_living': schedule.iCategory === 'Daily Living', 'education': schedule.iCategory === 'Education', 'personal': schedule.iCategory === 'Personal', 'logistics':schedule.iCategory === 'Logistics'}">
+         
+          <div >
+            <td class="mdl-data-table__cell--non-numeric">
+            
+              
+              {{ schedule.iStart }}
+              <div ng-show="schedule.iEnd">
+               - {{ schedule.iEnd }}
+              </div>
+          </td>
+            <td>
+              {{ schedule.iName }} 
+            </td>
+
+          </div>
+        </tr>
+    
+      </tbody>
+    </table>
+
+
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+
+  </div>
+</div>
+

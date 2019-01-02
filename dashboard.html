@@ -1,0 +1,92 @@
+<div class="page-content"> 
+
+      <!-- Grid -->
+		<div class="mdl-grid">
+		<!-- Schedule on Dashboard -->
+			<div class="mdl-cell mdl-cell--4-col" >
+				<div id="schedule">
+				<div ng-controller="ScheduleCtrl as vm" >
+				
+				<div ng-repeat="item in vm.items" >
+
+				<div ng-class="{'business': item.iCategory === 'Business', 'health': item.iCategory === 'Health', 'daily_living': item.iCategory === 'Daily Living', 'education': item.iCategory === 'Education', 'personal': item.iCategory === 'Personal', 'logistics':item.iCategory === 'Logistics'}" class="schedule-card mdl-card mdl-shadow--2dp"
+				ng-click="vm.select(item)">
+
+				  <div class="mdl-card__title">
+				    <h2 class="mdl-card__title-text">{{ item.iStart}} {{ item.iName}}</h2>
+				  </div>
+
+				  <div class="mdl-card__actions mdl-card--border">
+				    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				     <i class="material-icons">event</i>
+				    </a>
+				  </div>
+
+				</div>
+				</div>
+				
+ 				</div>
+ 				</div>
+			</div>
+
+		<!-- Dashboard -->
+			<div class="mdl-cell mdl-cell--8-col">
+				<div id="dashboard" ng-controller="DashboardCtrl">
+					<div class="dashboard-card mdl-card mdl-shadow--4dp" 
+					ng-class="{'business': item.iCategory === 'Business', 'health': item.iCategory === 'Health', 'daily_living': item.iCategory === 'Daily Living', 'education': item.iCategory === 'Education', 'personal': item.iCategory === 'Personal', 'logistics':item.iCategory === 'Logistics'}">
+						
+						<div  class="mdl-card__title">
+
+				    	<h1 id="geo" class="mdl-card__title-text">
+				    	{{ curr_date }} <br>
+				    	{{ curr_time }} 
+				    	</h1>
+
+				  		</div>
+						
+						<div id="current_info">
+						<div class="mdl-card__actions mdl-card--border">
+							
+							<h1 class="mdl-card__title-text" id="headline">
+					    	It's time for your {{item.iName}} 
+					    	 
+					    	</h1>
+
+					   		<div id="streak" class="material-icons mdl-badge mdl-badge--overlap" data-badge="{{item.iD}}">done_all</div>
+
+						</div>
+
+						<div class="mdl-card__actions" id="dash_details">
+							({{item.iStart}} - {{item.iEnd}}) <br>
+								
+							
+						</div>	
+						
+						<div class="mdl-card__actions" id="notes">
+							<p>Bench Press: 135 * (3 x 5)
+								
+							   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."	
+							</p>
+						
+						</div>	
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							
+
+							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+							<i class="material-icons">event</i>
+							</a>
+
+
+						</div>
+
+
+					</div>
+				</div>
+				
+			</div>
+
+
+
+      </div>
+      </div>

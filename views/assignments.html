@@ -1,0 +1,209 @@
+<div class="container" ng-controller="AssignmentsCtrl">
+<div class="mdl-grid" id="assignment_input">
+  <div class="mdl-cell mdl-cell--12-col" >
+    <form action="#">
+       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="a_inp">
+        <input ng-model="assignment.name" class="mdl-textfield__input" type="text" >
+        <label class="mdl-textfield__label" for="aName">Assignment Name</label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="a_inp">
+        <input ng-model="assignment.date" class="mdl-textfield__input" type="text" >
+        <label class="mdl-textfield__label" for="aDate">Due Date</label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="a_inp">
+        <input ng-model="assignment.time"class="mdl-textfield__input" type="text" >
+        <label class="mdl-textfield__label" for="aTime">Due Time</label>
+      </div>
+
+    <select class="ui dropdown" ng-model="assignment.category" ng-options="type for type in types" id="a_inp">
+      <option value="">Category</option>
+    </select>
+
+
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+    ng-disabled="!assignment.name || !assignment.date"ng-click="add(assignment)" id="a_inp">
+      <i class="material-icons">add</i>
+    </button>
+
+    </form>
+
+
+
+
+  </div>
+</div>
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--12-col">
+
+  <h2>You have {{ assignments_day.length }} assignments due today, and {{ assignments_week.length}} due this week.</h2>
+  <h3>Due Today:</h3>
+    
+      <div ng-repeat="assignment in (assignments_day = (assignments | filter: todaysAssignments))">
+          
+            <div class="mdl-grid mdl-grid--no-spacing" id="a_card">
+                 <div ng-class="{'business': assignment.category === 'Business', 
+                          'health': assignment.category === 'Health', 
+                          'daily_living': assignment.category === 'Daily Living', 
+                          'education': assignment.category === 'Education', 
+                          'personal': assignment.category === 'Personal',
+                          'logistics':assignment.category === 'Logistics'}" 
+                 class="mdl-cell mdl-cell--2-col mdl-card"
+                 id="a_due">
+                
+                <div class="mdl-card__title">
+                    <h2 id="assignment_title" class="mdl-card__title-text">{{ due(assignment) }}</h2>
+                  </div>
+                  
+                 </div>
+                 <div ng-class="{'business': assignment.category === 'Business', 
+                          'health': assignment.category === 'Health', 
+                          'daily_living': assignment.category === 'Daily Living', 
+                          'education': assignment.category === 'Education', 
+                          'personal': assignment.category === 'Personal',
+                          'logistics':assignment.category === 'Logistics'}" 
+                 class="mdl-cell mdl-cell--10-col mdl-card mdl-shadow--2dp"
+                 id="a_info">
+
+                  <div  id="assignment_div" class="mdl-card__title">
+
+                  <h2 id="assignment_title" >{{ assignment.name }} {{assignment.completed}}
+
+                  <button ng-click="done(assignment)" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="a_btn">
+                    <i class="material-icons">done</i>
+                  </button> 
+                 
+                  </h2>
+
+
+                  </div>
+                
+                   <span>   </span>
+                
+              
+
+                 </div>
+            </div>  
+    
+      </div>
+
+    <h3>Next Two Weeks:</h3>
+        <div ng-repeat="assignment in (assignments_week = (assignments | filter: weeksAssignments))">
+          
+            <div class="mdl-grid mdl-grid--no-spacing" id="a_card">
+                 <div ng-class="{'business': assignment.category === 'Business', 
+                          'health': assignment.category === 'Health', 
+                          'daily_living': assignment.category === 'Daily Living', 
+                          'education': assignment.category === 'Education', 
+                          'personal': assignment.category === 'Personal',
+                          'logistics':assignment.category === 'Logistics'}" 
+                 class="mdl-cell mdl-cell--2-col mdl-card"
+                 id="a_due">
+                
+                <div class="mdl-card__title">
+                    <h2 id="assignment_title" class="mdl-card__title-text">{{ due(assignment) }}</h2>
+                  </div>
+                  
+                 </div>
+                 <div ng-class="{'business': assignment.category === 'Business', 
+                          'health': assignment.category === 'Health', 
+                          'daily_living': assignment.category === 'Daily Living', 
+                          'education': assignment.category === 'Education', 
+                          'personal': assignment.category === 'Personal',
+                          'logistics':assignment.category === 'Logistics'}" 
+                 class="mdl-cell mdl-cell--10-col mdl-card mdl-shadow--2dp"
+                 id="a_info">
+
+                  <div  id="assignment_div" class="mdl-card__title">
+
+                  <h2 id="assignment_title" >{{ assignment.name }}
+
+                   <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="a_btn" ng-click="done(assignment)">
+                    <i class="material-icons">done</i>
+                  </button> 
+                 
+                 
+                  </h2>
+
+
+                  </div>
+                
+                   <span>   </span>
+                
+              
+
+                 </div>
+            </div>  
+    
+      </div>
+
+       <h3>Other Assignments:</h3>
+
+        <div ng-repeat="assignment in (assignments_future = (assignments | filter: futureAssignments))">
+
+
+          
+            <div class="mdl-grid mdl-grid--no-spacing" id="a_card">
+                 <div ng-class="{'business': assignment.category === 'Business', 
+                          'health': assignment.category === 'Health', 
+                          'daily_living': assignment.category === 'Daily Living', 
+                          'education': assignment.category === 'Education', 
+                          'personal': assignment.category === 'Personal',
+                          'logistics':assignment.category === 'Logistics'}" 
+                 class="mdl-cell mdl-cell--2-col mdl-card"
+                 id="a_due">
+                
+                <div class="mdl-card__title">
+                    <h2 id="assignment_title" class="mdl-card__title-text">{{ due(assignment) }}</h2>
+                  </div>
+                  
+                 </div>
+                 <div ng-class="{'business': assignment.category === 'Business', 
+                          'health': assignment.category === 'Health', 
+                          'daily_living': assignment.category === 'Daily Living', 
+                          'education': assignment.category === 'Education', 
+                          'personal': assignment.category === 'Personal',
+                          'logistics':assignment.category === 'Logistics'}" 
+                 class="mdl-cell mdl-cell--10-col mdl-card mdl-shadow--2dp"
+                 id="a_info">
+
+                  <div  id="assignment_div" class="mdl-card__title">
+
+                  <h2 id="assignment_title" >{{ assignment.name }}
+
+                   <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="a_btn" ng-click="done(assignment)">
+                    <i class="material-icons">done</i>
+                  </button> 
+                 
+                 
+                  </h2>
+
+
+                  </div>
+                
+                   <span>   </span>
+                
+              
+
+                 </div>
+            </div>  
+    
+      </div>
+
+
+    
+  </div>
+</div>
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--12-col">
+    
+
+
+
+    
+  </div>
+</div>
+</div>
